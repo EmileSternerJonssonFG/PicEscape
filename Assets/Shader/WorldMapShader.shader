@@ -30,7 +30,7 @@
 			o.Albedo = tex2D(_MainTex, IN.worldPos.xy);
 		}
 
-		o.Emission = o.Albedo;
+		//o.Emission = float4(0,0,0,0);
 	}
 		ENDCG
 
