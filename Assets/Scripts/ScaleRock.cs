@@ -5,11 +5,11 @@ using UnityEngine;
 public class ScaleRock : MonoBehaviour
 {
     public Vector3 RockSizeScaler;
-    public Vector3 GoingLarge;
-    public Vector3 ScaleTowards;
+    private Vector3 GoingLarge;
+    private Vector3 ScaleTowards;
     private bool IsScalingup;
-    public Vector3 ScaleFrom;
-    public Vector3 Normalsize;
+    private Vector3 ScaleFrom;
+    private Vector3 Normalsize;
     // Start is called before the first frame update
 
     private void Awake()
