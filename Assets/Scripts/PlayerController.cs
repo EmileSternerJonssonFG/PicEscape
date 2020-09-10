@@ -215,6 +215,13 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("diamond"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }
 
 
