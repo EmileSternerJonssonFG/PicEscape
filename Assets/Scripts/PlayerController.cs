@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour
 
         //Changing Body
         Quaternion bodyTurnAngle = Quaternion.Euler(0, _LocalRotation.x, 0);
+
         playerGO.transform.rotation =
             Quaternion.Lerp(
                 playerGO.transform.rotation,
