@@ -16,14 +16,17 @@ public class PlayerController : MonoBehaviour
 
 
 
-    public float jumpForce = 5f;
+    private float jumpForce = 5f;
 
-    public float forwardForce = 1f;
-    public float sideForce = 1f;
-    public float backwardForce = 1f;
+    private float forwardForce = 6f;
+    private float sideForce = 5f;
+    private float backwardForce = 4f;
 
-    public bool inAir;
-    public bool trippleJumpAvailable;
+    private float airForceResistance = 0.7f;
+    private float airForceResistanceCurrent = 0f;
+
+    private bool inAir;
+    private bool trippleJumpAvailable;
 
 
 
@@ -98,6 +101,13 @@ public class PlayerController : MonoBehaviour
         {
             inAir = false;
         }
+
+        if (inAir==true)
+        {
+            airForceResistanceCurrent = airForceResistance;
+
+        }
+        else { airForceResistanceCurrent = 0; }
     }
 
 #endregion
@@ -121,24 +131,25 @@ public class PlayerController : MonoBehaviour
 
     void MoveForward()
     {
-        playerRB.AddForce(playerGO.transform.forward * forwardForce, ForceMode.Force);
+        playerRB.AddForce(playerGO.transform.forward * forwardForce*(1f-airForceResistanceCurrent), ForceMode.Force);
+        Debug.Log("force forward");
     }
 
     void MoveBackwards()
     {
-        playerRB.AddForce(playerGO.transform.forward * backwardForce * -1f, ForceMode.Force);
+        playerRB.AddForce(playerGO.transform.forward * backwardForce * -1f * (1f - airForceResistanceCurrent), ForceMode.Force);
     }
 
 
 
     void MoveLeft()
     {
-        playerRB.AddForce(playerGO.transform.right * -sideForce, ForceMode.Force);
+        playerRB.AddForce(playerGO.transform.right * -sideForce * (1f - airForceResistanceCurrent), ForceMode.Force);
     }
 
     void MoveRight()
     {
-        playerRB.AddForce(playerGO.transform.right * sideForce, ForceMode.Force);
+        playerRB.AddForce(playerGO.transform.right * sideForce * (1f - airForceResistanceCurrent), ForceMode.Force);
     }
     #endregion
 
@@ -223,6 +234,14 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+
+
+
+
+
+
+
 }
 
 
