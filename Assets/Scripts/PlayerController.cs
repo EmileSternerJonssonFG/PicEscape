@@ -18,9 +18,9 @@ public class PlayerController : MonoBehaviour
 
     private float jumpForce = 5f;
 
-    private float forwardForce = 6f;
-    private float sideForce = 5f;
-    private float backwardForce = 4f;
+    private float forwardForce = 2f;
+    private float sideForce = 2f;
+    private float backwardForce = 2f;
 
     private float airForceResistance = 0.7f;
     private float airForceResistanceCurrent = 0f;
