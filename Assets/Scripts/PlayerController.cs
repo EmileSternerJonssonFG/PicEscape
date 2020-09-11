@@ -39,17 +39,19 @@ public class PlayerController : MonoBehaviour
     private float rotateX;
     private float rotateY;
 
-    public float camDistance;
+    public float camDistance=3f;
     public float orbitSpeed = 10.0f;
     public float zoomSpeed = 5.0f;
-    private float camMaxDistance = 50.0f;
-    private float camMinDistance = 2.0f;
+    public float camMaxDistance = 50.0f;
+    public float camMinDistance = 2.0f;
+    public bool canZoom=true;
+
 
     public float smoothFactorZoom = 0.5f;
     public float smoothFactorOrbit = 0.8f;
     public float smoothCameraStepY = 0.2f;
 
-    public float camStartDistance = 9.0f;
+    public float camStartDistance = 3.0f;
     public Vector3 camStartRotation;
 
     #endregion variables
@@ -74,6 +76,8 @@ public class PlayerController : MonoBehaviour
         forwardForce *= forceMultiplier;
         backwardForce *= forceMultiplier;
         sideForce *= forceMultiplier;
+        playerCamera.transform.localPosition = new Vector3(0,0, this.camStartDistance * -1f);
+        camDistance = camStartDistance;
     }
 
     private void FixedUpdate()
@@ -120,7 +124,7 @@ public class PlayerController : MonoBehaviour
         RotateCamera();
 
 
-        if (Physics.Raycast(bottomGO.transform.position, -Vector3.up,0.1f))
+        if (Physics.Raycast(bottomGO.transform.position, -Vector3.up,0.2f))
         {
             inAir = false;
         }
@@ -238,7 +242,7 @@ public class PlayerController : MonoBehaviour
 
 
         //Apply Zoom
-        if (playerCamera.transform.localPosition.z != this.camDistance * -1)
+        if (playerCamera.transform.localPosition.z != this.camDistance * -1 && canZoom)
         {
             playerCamera.transform.localPosition =
                 new Vector3(0f, 0f, Mathf.Lerp(
