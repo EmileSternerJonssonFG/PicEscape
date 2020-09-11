@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
     public float camDistance;
     public float orbitSpeed = 10.0f;
     public float zoomSpeed = 5.0f;
-    public float camMaxDistance = 100.0f;
-    public float camMinDistance = 1.0f;
+    private float camMaxDistance = 50.0f;
+    private float camMinDistance = 2.0f;
 
     public float smoothFactorZoom = 0.5f;
     public float smoothFactorOrbit = 0.8f;
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         else { airForceResistanceCurrent = 0; }
     }
 
-#endregion
+    #endregion
 
     #region movement
     void Jump()
@@ -227,6 +227,10 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+
+
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("diamond"))
