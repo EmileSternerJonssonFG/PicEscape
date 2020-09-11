@@ -1473,8 +1473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 6
-  Direction: {x: 0, y: 10, z: 0}
-  Distance: 11
+  Direction: {x: 0, y: 12, z: 0}
+  Distance: 12
 --- !u!23 &36813752
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -40075,7 +40075,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh215614
+  m_Name: pb_Mesh23606
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -80282,8 +80282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 6
-  Direction: {x: 0, y: 10, z: 0}
-  Distance: 11
+  Direction: {x: 0, y: 12, z: 0}
+  Distance: 12
 --- !u!23 &1664782568
 MeshRenderer:
   m_ObjectHideFlags: 0
