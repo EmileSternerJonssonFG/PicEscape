@@ -43,7 +43,6 @@ public class RayCastDoOnCollisionEvent : MonoBehaviour
             Debug.DrawRay(rayCastTransforms[i].position, currentDirection * detectionRayCastLength, Color.red);
             if (Physics.Raycast(rayCastTransforms[i].position, currentDirection * detectionRayCastLength, out hit, detectionRayCastLength, detectionLayerMask))
             {
-                Debug.Log("Ray has been hit");
                 currentObjectDetected = hit.collider.gameObject;
                 eventToDo.Invoke();
 

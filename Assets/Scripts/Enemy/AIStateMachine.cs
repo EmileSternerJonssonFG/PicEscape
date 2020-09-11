@@ -70,7 +70,10 @@ public class AIStateMachine : MonoBehaviour
                 break;
             case States.MOVEMENT:
                 //Move random add timer that counts down until Idle
-                MoveToward(currentObjectDetected.transform.position, Random.Range(randomMoveTimeRange.x,randomMoveTimeRange.y));
+                if(currentObjectDetected != null)
+                {
+                    MoveToward(currentObjectDetected.transform.position, Random.Range(randomMoveTimeRange.x,randomMoveTimeRange.y));
+                }
                 break;
             case States.ATTACK:
                 //Move towards player add timer that counts down until Idle
@@ -90,7 +93,6 @@ public class AIStateMachine : MonoBehaviour
             Debug.DrawRay(rayCastTransforms[i].position, currentDirection * detectionRayCastLength,Color.red);
             if (Physics.Raycast(rayCastTransforms[i].position, currentDirection * detectionRayCastLength,out hit, detectionRayCastLength, detectionLayerMask))
             {
-                Debug.Log("Ray has been hit");
                 currentObjectDetected = hit.collider.gameObject;
                 current_state = States.MOVEMENT;
 

@@ -404,9 +404,14 @@ GameObject:
   - component: {fileID: 1382572014}
   - component: {fileID: 1382572013}
   - component: {fileID: 1382572012}
+  - component: {fileID: 1382572017}
+  - component: {fileID: 1382572016}
+  - component: {fileID: 1382572015}
+  - component: {fileID: 1382572019}
+  - component: {fileID: 1382572018}
   - component: {fileID: 1382572011}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: TestInteractionCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,7 +449,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 69f05d11c4c4e704ead3e43f80e8e9ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -488,6 +493,112 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1382572015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382572010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57dcc6ecc0036e643a8bc035469b1cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isExecuteOnStart: 0
+  isExecuteDelay: 0
+  timeToEvent: 1
+  eventToHappen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1382572017}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: RemoveHealth
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1382572016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382572010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be474385fe97c7e49baab434307e9606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUseTag: 0
+  tagToCheck: Enemy
+  eventOnCollision: {fileID: 1382572015}
+--- !u!114 &1382572017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382572010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7a01a29c7ce074abd01306dc967f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 10
+  onDeathEvent: {fileID: 1382572019}
+--- !u!114 &1382572018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382572010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a13620ccb7249046ba1a2635f34743b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToSpawn:
+  - {fileID: 1348168757415223460, guid: 7b15370864e436b40a313216200c97ad, type: 3}
+  rotationOfObjects: {x: 0, y: -90, z: 0, w: 0}
+  objectPositionsOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1382572019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382572010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57dcc6ecc0036e643a8bc035469b1cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isExecuteOnStart: 0
+  isExecuteDelay: 0
+  timeToEvent: 1
+  eventToHappen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1382572018}
+        m_TargetAssemblyTypeName: SpawnObjectsAndDestroyThis, Assembly-CSharp
+        m_MethodName: ExecuteDestroyAndSpawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &706712143624869369
 PrefabInstance:
   m_ObjectHideFlags: 0
