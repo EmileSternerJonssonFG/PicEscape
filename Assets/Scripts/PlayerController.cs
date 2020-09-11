@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private float rotateX;
     private float rotateY;
 
-    public float camDistance;
+    public float camDistance=3f;
     public float orbitSpeed = 10.0f;
     public float zoomSpeed = 5.0f;
     private float camMaxDistance = 50.0f;
