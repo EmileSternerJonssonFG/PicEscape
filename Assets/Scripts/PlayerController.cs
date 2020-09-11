@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     GameObject playerCameraHolderGO;
     Rigidbody playerRB;
     GameObject bottomGO;
+    AudioSource jumpAudio;
+    AudioSource diamondAudio;
+    GameObject audioHolder;
 
 
     public float horizontalDrag=0.05f; //only applied if in air
@@ -66,8 +69,9 @@ public class PlayerController : MonoBehaviour
         //playerRB = playerGO.transform.Find("PlectrumModel/Model").GetComponent<Rigidbody>();
         playerRB = playerGO.GetComponent<Rigidbody>();
         bottomGO = playerGO.transform.Find("Bottom").gameObject;
-
-        
+        audioHolder = playerGO.transform.Find("Audio").gameObject;
+        jumpAudio = audioHolder.transform.Find("Jump").GetComponent<AudioSource>();
+        diamondAudio = audioHolder.transform.Find("Diamond").GetComponent<AudioSource>();
 
     }
 
@@ -154,11 +158,15 @@ public class PlayerController : MonoBehaviour
             playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             trippleJumpAvailable = true;
             inAir = true;
+
+            jumpAudio.PlayOneShot(jumpAudio.clip);
         }
         else if (trippleJumpAvailable)
         {
             playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             trippleJumpAvailable = false;
+
+            jumpAudio.PlayOneShot(jumpAudio.clip);
         }
 
     }
@@ -272,6 +280,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("diamond"))
         {
             Destroy(other.gameObject);
+            diamondAudio.PlayOneShot(diamondAudio.clip);
         }
         if (other.gameObject.CompareTag("victory"))
         {
