@@ -1280,7 +1280,9 @@ GameObject:
   - component: {fileID: 706712144562405003}
   - component: {fileID: 706712144562405007}
   - component: {fileID: 706712144562405006}
+  - component: {fileID: 2639616121288669374}
   - component: {fileID: 450721593180062600}
+  - component: {fileID: 2930638620766437659}
   m_Layer: 8
   m_Name: EnemySpider
   m_TagString: Untagged
@@ -1411,6 +1413,21 @@ MonoBehaviour:
   - {fileID: 5920685980210739424}
   - {fileID: 7363484291331270479}
   - {fileID: 2279770616901396096}
+--- !u!114 &2639616121288669374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706712144562405000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff267a6930e3f29448b67a3aa3bd0c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  currentHealth: 1
+  onDeathEvent: {fileID: 0}
 --- !u!114 &450721593180062600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,6 +1441,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
+--- !u!114 &2930638620766437659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706712144562405000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57dcc6ecc0036e643a8bc035469b1cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEvent: 1
+  eventToHappen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &779595320288189158
 GameObject:
   m_ObjectHideFlags: 0
