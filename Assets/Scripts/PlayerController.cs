@@ -15,18 +15,18 @@ public class PlayerController : MonoBehaviour
     GameObject bottomGO;
 
 
-    public float horizontalDrag=0.0f; //only applied if in air
+    public float horizontalDrag=0.05f; //only applied if in air
     private Vector3 vel; //used in fixedupdate for drag
 
     private float jumpForce = 6f;
 
-    private float forwardForce = 4f;
-    private float sideForce = 3.5f;
-    private float backwardForce = 3f;
+    private float forwardForce = 6f;
+    private float sideForce = 4.8f;
+    private float backwardForce = 4.5f;
 
     public float forceMultiplier = 1f;
 
-    private float airForceResistance = 1f;
+    private float airForceResistance = 0.3f;
     private float airForceResistanceCurrent = 0f;
 
     private bool inAir;
@@ -81,8 +81,8 @@ public class PlayerController : MonoBehaviour
         if (inAir)
         {
             vel = playerRB.velocity;
-            vel.x *= 1f - horizontalDrag;
-            vel.z *= 1f - horizontalDrag;
+            vel.x *= 1f - horizontalDrag*Time.fixedDeltaTime;
+            vel.z *= 1f - horizontalDrag * Time.fixedDeltaTime;
             playerRB.velocity = vel;
 
         }
@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
         {
             inAir = false;
         }
+        else { inAir = true; }
 
         if (inAir==true)
         {

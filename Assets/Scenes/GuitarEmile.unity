@@ -1048,6 +1048,14 @@ PrefabInstance:
       propertyPath: horizontalDrag
       value: 0.99
       objectReference: {fileID: 0}
+    - target: {fileID: 3561312029709369510, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561312029709369510, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4097852307736977768, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
