@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GuitarEmile.unity
     guid: fabfdfb77b8411443968618cf7df9422
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/level4.unity
     guid: d34d009591d01224185d7baf45dd72e8
+  - enabled: 0
+    path: Assets/Scenes/Guitar.unity
+    guid: 860327c3e8119424d8f5981fbdf46285
   m_configObjects: {}
