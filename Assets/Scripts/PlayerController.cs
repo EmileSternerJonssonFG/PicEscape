@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     public float zoomSpeed = 5.0f;
     public float camMaxDistance = 50.0f;
     public float camMinDistance = 2.0f;
-    public bool canZoom=true;
+    public bool camCanZoom=true;
 
 
     public float smoothFactorZoom = 0.5f;
@@ -194,16 +194,23 @@ public class PlayerController : MonoBehaviour
             _LocalRotation.x += Input.GetAxis("Mouse X") * orbitSpeed;
         }
 
+        if (_LocalRotation.x > 179f) { _LocalRotation.x = 179; }
+        else if ( _LocalRotation.x < -179f) { _LocalRotation.x = -179; }
+
 
 
         //Changing Body
         Quaternion bodyTurnAngle = Quaternion.Euler(0, _LocalRotation.x, 0);
 
+        playerGO.transform.rotation =bodyTurnAngle;
+
+        /*
         playerGO.transform.rotation =
             Quaternion.Lerp(
                 playerGO.transform.rotation,
                 bodyTurnAngle,
                 Time.deltaTime * smoothFactorOrbit);
+        */
     }
 
 
@@ -248,7 +255,7 @@ public class PlayerController : MonoBehaviour
 
 
         //Apply Zoom
-        if (playerCamera.transform.localPosition.z != this.camDistance * -1 && canZoom)
+        if (playerCamera.transform.localPosition.z != this.camDistance * -1 && camCanZoom)
         {
             playerCamera.transform.localPosition =
                 new Vector3(0f, 0f, Mathf.Lerp(
