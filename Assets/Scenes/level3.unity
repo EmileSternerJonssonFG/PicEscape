@@ -102507,6 +102507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c629a23cc8a7c4687d671f0c3abd3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 0.01
+  MovementSpeed: 3
   Direction: {x: 0, y: 5, z: 0}
   Distance: 5
