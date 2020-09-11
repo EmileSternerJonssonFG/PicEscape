@@ -29,7 +29,7 @@ public class PlatformMovement : MonoBehaviour
     }
     private void Move()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, MovingTowards, MovementSpeed * Time.deltaTime);
+        this.transform.position = Vector3.MoveTowards(this.transform.position, MovingTowards, MovementSpeed);
     }
     private void EndPosition()
     {
