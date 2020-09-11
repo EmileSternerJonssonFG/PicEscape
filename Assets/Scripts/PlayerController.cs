@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         RotateCamera();
 
 
-        if (Physics.Raycast(bottomGO.transform.position, -Vector3.up,0.1f))
+        if (Physics.Raycast(bottomGO.transform.position, -Vector3.up,0.2f))
         {
             inAir = false;
         }
