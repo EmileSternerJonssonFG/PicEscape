@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         playerRB = playerGO.GetComponent<Rigidbody>();
         bottomGO = playerGO.transform.Find("Bottom").gameObject;
 
-        Cursor.visible = false;
+        
 
     }
 
@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
         sideForce *= forceMultiplier;
         playerCamera.transform.localPosition = new Vector3(0,0, this.camStartDistance * -1f);
         camDistance = camStartDistance;
+        Cursor.lockState=CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void FixedUpdate()
@@ -85,7 +87,7 @@ public class PlayerController : MonoBehaviour
         if (inAir)
         {
             vel = playerRB.velocity;
-            vel.x *= 1f - horizontalDrag*Time.fixedDeltaTime;
+            vel.x *= 1f - horizontalDrag * Time.fixedDeltaTime;
             vel.z *= 1f - horizontalDrag * Time.fixedDeltaTime;
             playerRB.velocity = vel;
 
@@ -118,6 +120,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
         }
 
         RotateBody();
