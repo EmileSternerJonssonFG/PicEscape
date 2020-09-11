@@ -194,11 +194,6 @@ public class PlayerController : MonoBehaviour
             _LocalRotation.x += Input.GetAxis("Mouse X") * orbitSpeed;
         }
 
-        if (_LocalRotation.x > 179f) { _LocalRotation.x = 179; }
-        else if ( _LocalRotation.x < -179f) { _LocalRotation.x = -179; }
-
-
-
         //Changing Body
         Quaternion bodyTurnAngle = Quaternion.Euler(0, _LocalRotation.x, 0);
 
