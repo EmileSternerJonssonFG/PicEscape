@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Packages.Rider.Editor.UnitTesting;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -272,6 +273,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("diamond"))
         {
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("victory"))
+        {
+            plectrumGO.transform.Rotate(0, 180, 0);
         }
     }
 
