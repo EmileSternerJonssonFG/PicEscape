@@ -949,8 +949,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200152274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.3, y: 21, z: 5}
-  m_LocalScale: {x: 4, y: 1, z: 4}
+  m_LocalPosition: {x: 1, y: 21, z: 2}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 1382583876}
   m_RootOrder: 6
@@ -1038,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1123849986556523847, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
       propertyPath: canZoom
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3561312029709369510, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
       propertyPath: m_Enabled
@@ -1054,7 +1054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4097852307736977768, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: -20.2
       objectReference: {fileID: 0}
     - target: {fileID: 4097852307736977768, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1099,6 +1099,18 @@ PrefabInstance:
     - target: {fileID: 4142028848305458708, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
       propertyPath: m_Drag
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356472833303443098, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
+      propertyPath: m_FieldOfView
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356472833303443098, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 6356472833303443098, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
+      propertyPath: m_Orthographic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6471506254566446432, guid: c00c8aaf6ec29b140901f0d71e16bedb, type: 3}
       propertyPath: m_Name
