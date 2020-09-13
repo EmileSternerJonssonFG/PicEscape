@@ -56,7 +56,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346886499345341943}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b9dbea088c56be41805521a6fed0aa8, type: 3}
   m_Name: 
@@ -72,7 +72,7 @@ MonoBehaviour:
   eventToDo:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 522647446243544167}
+      - m_Target: {fileID: 7363616148441529644}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -107,6 +107,8 @@ MonoBehaviour:
   forceOffset: {x: 0, y: -5, z: 0}
   forceMode: 1
   rigidBodyToAddForce: {fileID: 706712144562405007}
+  randomRotation: 1
+  rotationSpeed: 1
 --- !u!1 &562866689320864380
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562866689320864380}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b9dbea088c56be41805521a6fed0aa8, type: 3}
   m_Name: 
@@ -179,7 +181,7 @@ MonoBehaviour:
   eventToDo:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7823780541358907106}
+      - m_Target: {fileID: 7363616148441529644}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -209,11 +211,13 @@ MonoBehaviour:
   isRandom: 1
   randomForceMinMaxX: {x: 0, y: 0}
   randomForceMinMaxY: {x: 0, y: 0}
-  randomForceMinMaxZ: {x: -50, y: 0}
+  randomForceMinMaxZ: {x: -500, y: 0}
   useOffset: 1
   forceOffset: {x: 0, y: 10, z: 0}
   forceMode: 0
   rigidBodyToAddForce: {fileID: 706712144562405007}
+  randomRotation: 1
+  rotationSpeed: 1
 --- !u!1 &658952995339898276
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +311,8 @@ Transform:
   - {fileID: 706712142616017292}
   - {fileID: 706712143633821208}
   - {fileID: 706712144323866885}
+  - {fileID: 5802818092741026280}
+  - {fileID: 6215485645796877676}
   m_Father: {fileID: 706712144562405004}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -854,7 +860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706712143633821209}
   m_LocalRotation: {x: -0, y: -0, z: -0.28315356, w: 0.9590746}
-  m_LocalPosition: {x: -0.61, y: -0.451, z: -0.06799999}
+  m_LocalPosition: {x: -0.61, y: -0.451, z: -0.13399997}
   m_LocalScale: {x: 0.17, y: 0.9680072, z: 0.1}
   m_Children: []
   m_Father: {fileID: 706712142506614097}
@@ -1130,7 +1136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706712144270570241}
   m_LocalRotation: {x: -0.28073114, y: 0.95086926, z: -0.03695972, w: 0.12518677}
-  m_LocalPosition: {x: 0.58, y: -0.451, z: -0.023999989}
+  m_LocalPosition: {x: 0.58, y: -0.451, z: -0.09}
   m_LocalScale: {x: 0.17022172, y: 0.9680071, z: -0.1}
   m_Children: []
   m_Father: {fileID: 706712142506614097}
@@ -1280,10 +1286,14 @@ GameObject:
   - component: {fileID: 706712144562405003}
   - component: {fileID: 706712144562405007}
   - component: {fileID: 706712144562405006}
-  - component: {fileID: 450721593180062600}
+  - component: {fileID: 2438589292557508903}
+  - component: {fileID: 7722909392669048679}
+  - component: {fileID: 4633096326327296491}
+  - component: {fileID: 2965184625338740366}
+  - component: {fileID: 1146660804085586621}
   m_Layer: 8
   m_Name: EnemySpider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1382,7 +1392,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &706712144562405006
 MonoBehaviour:
@@ -1402,16 +1412,31 @@ MonoBehaviour:
   rotateToTargetTime: 2
   randomMoveTimeRange: {x: 1, y: 2}
   randomForceMinMaxX: {x: 1, y: 2}
-  randomForceMinMaxY: {x: 50, y: 200}
+  randomForceMinMaxY: {x: 100, y: 300}
   isObjectDetected: 0
   currentObjectDetected: {fileID: 0}
   detectionRayCastLength: 8
-  detectionLayerMask: 1
+  detectionLayerMask: -2
+  eventToDoOnDetection:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7722909392669048679}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   rayCastTransforms:
   - {fileID: 5920685980210739424}
   - {fileID: 7363484291331270479}
   - {fileID: 2279770616901396096}
---- !u!114 &450721593180062600
+--- !u!114 &2438589292557508903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1420,10 +1445,178 @@ MonoBehaviour:
   m_GameObject: {fileID: 706712144562405000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af40fb0b3f3e406478711a62628a3637, type: 3}
+  m_Script: {fileID: 11500000, guid: 82d175a9383054e44821ff4cd8b38c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  pitchMin: 1
+  pitchMax: 1.2
+  thisAudioSource: {fileID: 7722909392669048679}
+  audioClipToPlay: {fileID: 8300000, guid: cfc88d9636441b14a8fb56eedc6ec731, type: 3}
+--- !u!82 &7722909392669048679
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706712144562405000}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cfc88d9636441b14a8fb56eedc6ec731, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &4633096326327296491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706712144562405000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7a01a29c7ce074abd01306dc967f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  currentHealth: 1
+  onDeathEvent: {fileID: 2965184625338740366}
+  hasKnockBack: 0
+  knockBack: {fileID: 0}
+  fxToSpawnOnHit: {fileID: 5476710898125977187, guid: d6064588ade77664cb02318688de4665, type: 3}
+  destroyOnDeath: 1
+--- !u!114 &2965184625338740366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706712144562405000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57dcc6ecc0036e643a8bc035469b1cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isExecuteOnStart: 0
+  isExecuteDelay: 0
+  timeToEvent: 1
+  eventToHappen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1146660804085586621}
+        m_TargetAssemblyTypeName: SpawnObjectsAndDestroyThis, Assembly-CSharp
+        m_MethodName: ExecuteDestroyAndSpawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1146660804085586621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706712144562405000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a13620ccb7249046ba1a2635f34743b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToSpawn:
+  - {fileID: 5476710898125977187, guid: d6064588ade77664cb02318688de4665, type: 3}
+  - {fileID: 1439571741190388989, guid: 486f708b5b1f7174c86c6a16f325219d, type: 3}
+  rotationOfObjects: {x: 0, y: 90, z: 90, w: 90}
+  objectPositionsOffset: {x: 0, y: 0, z: 0}
+  destroyAfterSpawn: 1
+  hideObjectAfterSpawn: 0
+  objectsToHide: []
 --- !u!1 &779595320288189158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,7 +1703,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3328406042251762140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b9dbea088c56be41805521a6fed0aa8, type: 3}
   m_Name: 
@@ -1526,7 +1719,7 @@ MonoBehaviour:
   eventToDo:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8021896545499784051}
+      - m_Target: {fileID: 7363616148441529644}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -1561,6 +1754,8 @@ MonoBehaviour:
   forceOffset: {x: 0, y: -5, z: 0}
   forceMode: 0
   rigidBodyToAddForce: {fileID: 706712144562405007}
+  randomRotation: 1
+  rotationSpeed: 1
 --- !u!1 &3869145233763384050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1902,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4334566430931924675}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b9dbea088c56be41805521a6fed0aa8, type: 3}
   m_Name: 
@@ -1723,7 +1918,7 @@ MonoBehaviour:
   eventToDo:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7445998423842293441}
+      - m_Target: {fileID: 7363616148441529644}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -1758,6 +1953,8 @@ MonoBehaviour:
   forceOffset: {x: 0, y: 5, z: 0}
   forceMode: 0
   rigidBodyToAddForce: {fileID: 706712144562405007}
+  randomRotation: 1
+  rotationSpeed: 1
 --- !u!1 &5068274057488166523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,7 +2011,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5068274057488166523}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b9dbea088c56be41805521a6fed0aa8, type: 3}
   m_Name: 
@@ -1830,7 +2027,7 @@ MonoBehaviour:
   eventToDo:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5791990271258961504}
+      - m_Target: {fileID: 7363616148441529644}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -1858,13 +2055,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRandom: 1
-  randomForceMinMaxX: {x: 0, y: 3}
-  randomForceMinMaxY: {x: 2, y: 3}
-  randomForceMinMaxZ: {x: 2, y: 3}
-  useOffset: 1
-  forceOffset: {x: 0, y: 20, z: 10}
-  forceMode: 5
+  randomForceMinMaxX: {x: -5, y: 5}
+  randomForceMinMaxY: {x: -5, y: 5}
+  randomForceMinMaxZ: {x: -5, y: 5}
+  useOffset: 0
+  forceOffset: {x: 0, y: 0, z: 0}
+  forceMode: 0
   rigidBodyToAddForce: {fileID: 706712144562405007}
+  randomRotation: 1
+  rotationSpeed: 20
 --- !u!1 &6272671580586353910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +2124,168 @@ Transform:
   m_Father: {fileID: 2032890235466539572}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7059062684016753833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6215485645796877676}
+  - component: {fileID: 6900172464747857129}
+  - component: {fileID: 1304206754101347912}
+  m_Layer: 8
+  m_Name: SpiderLegLeftMid (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6215485645796877676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059062684016753833}
+  m_LocalRotation: {x: -0, y: -0, z: -0.28315356, w: 0.9590746}
+  m_LocalPosition: {x: -0.66999996, y: -0.451, z: 0.15500054}
+  m_LocalScale: {x: 0.17, y: 0.9680072, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 706712142506614097}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -32.897}
+--- !u!33 &6900172464747857129
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059062684016753833}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1304206754101347912
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059062684016753833}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 4045bbdd194ec6e4bae10e8d95eac769, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7302813154398087850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5802818092741026280}
+  - component: {fileID: 2998538923234732832}
+  - component: {fileID: 7709465770979109971}
+  m_Layer: 8
+  m_Name: SpiderLegRightMid (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5802818092741026280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302813154398087850}
+  m_LocalRotation: {x: -0.28073114, y: 0.95086926, z: -0.03695972, w: 0.12518677}
+  m_LocalPosition: {x: 0.52, y: -0.451, z: 0.199}
+  m_LocalScale: {x: 0.17022172, y: 0.9680071, z: -0.1}
+  m_Children: []
+  m_Father: {fileID: 706712142506614097}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 165, z: -32.897}
+--- !u!33 &2998538923234732832
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302813154398087850}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &7709465770979109971
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302813154398087850}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 4045bbdd194ec6e4bae10e8d95eac769, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7321555667493801849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,7 +2372,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7391332805912503061}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b9dbea088c56be41805521a6fed0aa8, type: 3}
   m_Name: 
@@ -2027,7 +2388,7 @@ MonoBehaviour:
   eventToDo:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 846906252263516522}
+      - m_Target: {fileID: 7363616148441529644}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -2062,6 +2423,8 @@ MonoBehaviour:
   forceOffset: {x: 0, y: -5, z: 0}
   forceMode: 0
   rigidBodyToAddForce: {fileID: 706712144562405007}
+  randomRotation: 1
+  rotationSpeed: 1
 --- !u!1 &7400611025448104990
 GameObject:
   m_ObjectHideFlags: 0

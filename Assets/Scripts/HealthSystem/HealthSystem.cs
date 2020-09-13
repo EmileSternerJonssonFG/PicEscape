@@ -1,19 +1,44 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEditor.Events;
 
 [RequireComponent(typeof(SimpleEventExecutor))]
 public class HealthSystem : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth = 100;
+    public int maxHealth = 1;
+    public int currentHealth = 1;
 
     public SimpleEventExecutor onDeathEvent;
 
+    public bool hasKnockBack = true;
+    public KnockBack knockBack;
+
+    public GameObject fxToSpawnOnHit;
+
+    public bool destroyOnDeath = false;
+
+
+    private void Awake()
+    {
+        if (hasKnockBack)
+        {
+            knockBack = GetComponent<KnockBack>();
+        }
+    }
 
     public void RemoveHealth(int healthToRemove = 1)
     {
         currentHealth -= healthToRemove;
-        //currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        if(fxToSpawnOnHit != null)
+        {
+            Instantiate(fxToSpawnOnHit,transform.position,transform.rotation);
+        }
+
+        if (hasKnockBack)
+        {
+            knockBack.Knockback();
+        }
         CheckHealth();
         Debug.Log("RemoveHealth -=" + healthToRemove);
     }
@@ -21,16 +46,20 @@ public class HealthSystem : MonoBehaviour
     public void RecieveHealth(int healthToRecieve = 1)
     {
         currentHealth += healthToRecieve;
-        //currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
 
     public void CheckHealth()
     {
-        Debug.Log("CurrentHealth is" + currentHealth);
         if (currentHealth <= 0)
         {
             onDeathEvent.ExecuteEvent();
             Debug.Log("onDeathEvent!");
+            if (destroyOnDeath)
+            {
+                Destroy(gameObject);
+            }
+            currentHealth = 0;
+        Debug.Log("CurrentHealth is" + currentHealth);
         } // Add if isUseDelay flag if want to in future
     }
 }

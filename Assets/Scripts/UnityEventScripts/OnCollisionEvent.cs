@@ -7,6 +7,8 @@ public class OnCollisionEvent : MonoBehaviour
     public string tagToCheck;
     public SimpleEventExecutor eventOnCollision;
 
+    public Collision currentGameObjectCollison;
+
     private void Awake()
     {
         eventOnCollision = GetComponent<SimpleEventExecutor>();
@@ -26,5 +28,6 @@ public class OnCollisionEvent : MonoBehaviour
         {
             eventOnCollision.ExecuteEvent();
         }
+        currentGameObjectCollison = other;
     }
 }

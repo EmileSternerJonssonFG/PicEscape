@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AIStateMachine : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class AIStateMachine : MonoBehaviour
     public GameObject currentObjectDetected = null;
     public float detectionRayCastLength = 10f;
     public int detectionLayerMask = 0;
+
+    public UnityEvent eventToDoOnDetection;
 
     public Transform[] rayCastTransforms;
 
@@ -95,6 +98,8 @@ public class AIStateMachine : MonoBehaviour
             {
                 currentObjectDetected = hit.collider.gameObject;
                 current_state = States.MOVEMENT;
+
+                eventToDoOnDetection.Invoke();
 
                 // if look towards target 
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(currentObjectDetected.transform.position), Time.deltaTime * rotateToTargetTime); // OLD STIFF VERSION transform.LookAt(currentObjectDetected.transform.position);

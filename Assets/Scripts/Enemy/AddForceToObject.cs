@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class AddForceToObject : MonoBehaviour
 {
@@ -16,11 +18,21 @@ public class AddForceToObject : MonoBehaviour
 
     public Rigidbody rigidBodyToAddForce;
 
+    public bool randomRotation = true;
+    public float rotationSpeed = 1f;
+
 
     public void OnEnable()
     {
         ApplyForceOnObject(randomForceMinMaxX.x, randomForceMinMaxY.x, randomForceMinMaxZ.x, forceMode, isRandom, useOffset);
+        if (randomRotation)
+        {
+            rigidBodyToAddForce.AddTorque(new Vector3(0, rotationSpeed));
+            //rigidBodyToAddForce.transform.Rotate(Vector3.forward, Mathf.Lerp(Random.Range(0, 360), Random.Range(0, 360), rotationSpeed * Time.deltaTime));
+            //rigidBodyToAddForce.rotation = rigidBodyToAddForce.rotation.eulerAngles.y(Random.Range(0, 360));
+        }
         this.enabled = false;
+        
     }
 
     public void ApplyForceOnObject(float X, float Y, float Z, ForceMode forceMode, bool isRandom = true, bool useOffset = false)

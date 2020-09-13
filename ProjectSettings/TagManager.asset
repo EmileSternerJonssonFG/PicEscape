@@ -6,6 +6,7 @@ TagManager:
   tags:
   - diamond
   - victory
+  - Enemy
   layers:
   - Default
   - TransparentFX
